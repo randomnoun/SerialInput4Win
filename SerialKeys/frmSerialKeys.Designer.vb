@@ -40,6 +40,7 @@ Partial Class frmSerialKeys
         Me.lblStopBits = New System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.txtTestInput = New System.Windows.Forms.TextBox
+        Me.lblVersion = New System.Windows.Forms.Label
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -140,6 +141,7 @@ Partial Class frmSerialKeys
         '
         'cmdCancel
         '
+        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.Location = New System.Drawing.Point(187, 301)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(75, 23)
@@ -196,11 +198,23 @@ Partial Class frmSerialKeys
         Me.txtTestInput.Size = New System.Drawing.Size(215, 50)
         Me.txtTestInput.TabIndex = 0
         '
+        'lblVersion
+        '
+        Me.lblVersion.AutoSize = True
+        Me.lblVersion.Location = New System.Drawing.Point(213, 13)
+        Me.lblVersion.Name = "lblVersion"
+        Me.lblVersion.Size = New System.Drawing.Size(49, 13)
+        Me.lblVersion.TabIndex = 17
+        Me.lblVersion.Text = "ver 0.0.1"
+        '
         'frmSerialKeys
         '
+        Me.AcceptButton = Me.cmdApply
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.cmdCancel
         Me.ClientSize = New System.Drawing.Size(283, 336)
+        Me.Controls.Add(Me.lblVersion)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblStopBits)
         Me.Controls.Add(Me.cmbStopBits)
@@ -217,6 +231,7 @@ Partial Class frmSerialKeys
         Me.Controls.Add(Me.cmbBaud)
         Me.Controls.Add(Me.cmbPort)
         Me.Controls.Add(Me.chkEnabled)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSerialKeys"
         Me.Text = "SerialKeys"
@@ -243,5 +258,6 @@ Partial Class frmSerialKeys
     Friend WithEvents lblStopBits As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtTestInput As System.Windows.Forms.TextBox
+    Friend WithEvents lblVersion As System.Windows.Forms.Label
 
 End Class
