@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SerialKeys")> 
+<Assembly: AssemblyTitle("SerialInput4Win")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("randomnoun")> 
-<Assembly: AssemblyProduct("SerialKeys")> 
+<Assembly: AssemblyProduct("SerialInput4Win")> 
 <Assembly: AssemblyCopyright("Copyright © randomnoun 2013")> 
 <Assembly: AssemblyTrademark("")> 
 

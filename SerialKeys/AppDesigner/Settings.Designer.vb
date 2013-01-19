@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.SerialKeys.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SerialInput4Win.My.MySettings
             Get
-                Return Global.SerialKeys.My.MySettings.Default
+                Return Global.SerialInput4Win.My.MySettings.Default
             End Get
         End Property
     End Module
