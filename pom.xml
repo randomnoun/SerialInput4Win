@@ -2,14 +2,14 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.randomnoun.SerialInput4Win</groupId>
-  <artifactId>SerialInput4Win</artifactId>
+  <artifactId>SerialInput4Win-exe</artifactId>
   <packaging>pom</packaging>
   <name>SerialInput4Win</name>
   <version>0.0.1-SNAPSHOT</version>
   <scm>
-    <connection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win-exe</connection>
-    <developerConnection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win-exe</developerConnection>
-    <url>http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:serialInput4Win2005-exe</url>
+    <connection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win</connection>
+    <developerConnection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win</developerConnection>
+    <url>http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win</url>
   </scm>
   <build>  
     <plugins>
