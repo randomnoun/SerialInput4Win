@@ -2,7 +2,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.randomnoun.SerialInput4Win</groupId>
-  <artifactId>SerialInput4Win-exe</artifactId>
+  <artifactId>SerialInput4Win</artifactId>
   <packaging>pom</packaging>
   <name>SerialInput4Win</name>
   <version>0.0.1-SNAPSHOT</version>
@@ -16,6 +16,7 @@
       <plugin>
         <artifactId>exec-maven-plugin</artifactId>
         <groupId>org.codehaus.mojo</groupId>
+        <version>1.2.1</version>
         <executions>
           <!-- Do whatever's necessary to shove the maven version into the .NET assemblies -->
           <!--
@@ -44,9 +45,86 @@
           </execution>
         </executions>
       </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>nsis-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate-project</goal>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <!-- it would be nice if this worked
+              <classifier>setup</classifier>
+              -->
+              <makensisBin>C:\Program Files\NSIS\makensis.exe</makensisBin>
+              <!--  can't handle paths with spaces in it :( -->
+              <!--  ${project.build.directory}/${project.build.finalName} -->
+              <outputFile>c:\installer\SerialInput4Win-setup-${project.version}.exe</outputFile>
+              <setupScript>src/main/nsi/setup.nsi</setupScript>
+            </configuration>
+          </execution>
+          
+        </executions>
+      </plugin>
+
+      <!-- as per http://stackoverflow.com/questions/6365642/how-should-i-get-maven-to-deploy-artifacts-for-all-supported-architectures-at-th -->  
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>attach-artifacts</id>
+            <phase>package</phase>
+            <goals>
+                <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+                <artifacts>
+                    <artifact>
+                        <file>${basedir}\SerialInput4Win\bin\debug\SerialInput4Win.exe</file>
+                        <classifier>nosetup</classifier>
+                        <type>exe</type>
+                    </artifact>
+                    <!--
+                    <artifact>
+                        <file>c:\installer\SerialInput4Win-setup-${project.version}.exe</file>
+                        <classifier>setup</classifier>
+                        <type>exe</type>
+                    </artifact>
+                    -->
+                </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
     </plugins>
   </build>
-  
+  <pluginRepositories>
+    <pluginRepository>
+      <id>nexus-snapshots</id> 
+      <!--  <url>http://snapshots.repository.codehaus.org/</url> should be sent to mirror in settings.xml -->
+      <url>http://nexus.dev.randomnoun:8082/nexus/content/groups/public-snapshots</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <distributionManagement>
+    <repository>
+        <id>releases</id>
+        <name>randomnoun releases</name>
+        <url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>randomnoun snapshots</name>
+        <url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/snapshots/</url>
+        <uniqueVersion>false</uniqueVersion>
+    </snapshotRepository>
+  </distributionManagement>
   
   <!--
   <modules>
