@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.randomnoun.SerialInput4Win</groupId>
+  <artifactId>SerialInput4Win</artifactId>
+  <packaging>pom</packaging>
+  <name>SerialInput4Win</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <scm>
+    <connection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win-exe</connection>
+    <developerConnection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win-exe</developerConnection>
+    <url>http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:serialInput4Win2005-exe</url>
+  </scm>
+  <build>  
+    <plugins>
+      <plugin>
+        <artifactId>exec-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <executions>
+          <!-- Do whatever's necessary to shove the maven version into the .NET assemblies -->
+          <!--
+          <execution>
+            <id>update-app-version</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${basedir}/scripts/calculate-version.sh</executable>
+            </configuration>
+          </execution>
+          -->
+          <execution>
+            <id>visual-studio-build</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <!-- we just want to call the vsvars32 thing and then msbuild,
+                   but bugger doing two commands in a row in maven -->
+              <executable>build.bat</executable>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  
+  
+  <!--
+  <modules>
+    <module>SerialInput4Win</module>
+  </modules>
+  -->
+</project>
