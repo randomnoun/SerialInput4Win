@@ -5,7 +5,6 @@ Imports System.Reflection
 ' TODO minimise to tray; balloon tooltip when starting/stopping
 ' TODO checkbox to startup on login
 ' TODO CHM help file 
-' TODO NSIS installer/uninstaller
 ' TODO about box
 ' TODO rest of the keyboard codes
 ' TODO rest of the serialkeys api (i.e. mouse movements)
