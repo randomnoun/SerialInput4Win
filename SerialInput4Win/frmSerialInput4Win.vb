@@ -50,6 +50,8 @@ Public Class frmSerialInput4Win
     Private Sub frmSerialInput4Win_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         serialPortReceiver = New clsSerialPortReceiver()
 
+        lblVersion.Text = "ver " & Assembly.GetExecutingAssembly().GetName().Version.ToString()
+
         subSetInitialComboValues()
         subSetFromCommandLineArgs()
 
