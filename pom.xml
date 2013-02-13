@@ -6,6 +6,10 @@
   <packaging>pom</packaging>
   <name>SerialInput4Win</name>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+     <!-- this is overridden during bamboo builds; but exists here for developer snapshots -->
+     <bambooBuildNumber>1</bambooBuildNumber>
+  </properties>
   <scm>
     <connection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win</connection>
     <developerConnection>scm:svn:http://scm:cvs:pserver:vmaint@cvs.dev.randomnoun:/randomnoun:SerialInput4Win</developerConnection>
@@ -13,6 +17,46 @@
   </scm>
   <build>  
     <plugins>
+         <plugin>
+            <groupId>com.google.code.maven-replacer-plugin</groupId>
+            <artifactId>maven-replacer-plugin</artifactId>
+            <version>1.4.1</version>
+            <executions>
+                <execution>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>replace</goal>
+                    </goals>                    
+                </execution>
+            </executions>
+            <configuration>
+                <ignoreMissingFile>true</ignoreMissingFile>
+                <file>SerialInput4Win/AppDesigner/AssemblyInfo.vb</file>
+                <!-- <outputFile>SerialInput4Win/AppDesigner/AssemblyInfo.vb</outputFile> -->
+                <replacements>
+                    <replacement>
+                        <token>AssemblyVersion\(".*"\)</token>
+                        <value>AssemblyVersion("${project.version}.0")</value>
+                    </replacement>
+                    <replacement>
+                        <token>AssemblyFileVersion\(".*"\)</token>
+                        <value>AssemblyFileVersion("${project.version}.0")</value>
+                    </replacement>
+                    <!-- this hopefully replaces x.y.z-SNAPSHOT.0 versions to x.y.z.1 -->
+                    <replacement>
+                        <token>AssemblyVersion\("([0-9]+\.[0-9]+\.[0-9]+)-SNAPSHOT.0"\)</token>
+                        <value>AssemblyVersion("$1.${bambooBuildNumber}")</value>
+                    </replacement>
+                    <replacement>
+                        <token>AssemblyFileVersion\("([0-9]+\.[0-9]+\.[0-9]+)-SNAPSHOT.0"\)</token>
+                        <value>AssemblyFileVersion("$1.${bambooBuildNumber}")</value>
+                    </replacement>
+                    
+                </replacements>    
+            </configuration>
+        </plugin>
+
+
       <plugin>
         <artifactId>exec-maven-plugin</artifactId>
         <groupId>org.codehaus.mojo</groupId>
