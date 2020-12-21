@@ -153,22 +153,23 @@
     <pluginRepository>
       <id>nexus-snapshots</id> 
       <!--  <url>http://snapshots.repository.codehaus.org/</url> should be sent to mirror in settings.xml -->
-      <url>http://nexus.dev.randomnoun:8082/nexus/content/groups/public-snapshots</url>
+      <url>http://nexus.dev.randomnoun/nexus/content/groups/public-snapshots</url>
     </pluginRepository>
   </pluginRepositories>
   <distributionManagement>
-    <repository>
-        <id>releases</id>
-        <name>randomnoun releases</name>
-        <url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/releases/</url>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>randomnoun snapshots</name>
-        <url>http://nexus.dev.randomnoun:8082/nexus/content/repositories/snapshots/</url>
-        <uniqueVersion>false</uniqueVersion>
-    </snapshotRepository>
-  </distributionManagement>
+	    <repository>
+	        <id>releases</id>
+	        <name>randomnoun releases</name>
+	        <url>http://nexus2.dev.randomnoun/nexus/content/repositories/releases/</url>
+	    </repository>
+	    <snapshotRepository>
+	        <id>snapshots</id>
+	        <name>randomnoun snapshots</name>
+	        <url>http://nexus2.dev.randomnoun/nexus/content/repositories/snapshots/</url>
+	        <uniqueVersion>false</uniqueVersion>
+	    </snapshotRepository>
+	</distributionManagement>
+
   
   <!--
   <modules>
